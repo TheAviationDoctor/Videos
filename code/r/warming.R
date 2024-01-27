@@ -1,9 +1,9 @@
 # ==============================================================================
-#    NAME: code/r/10-warming.R
+#    NAME: code/r/warming.R
 #   INPUT: Warming data
 # ACTIONS: Animates a plot showing the surface temperature increase up to 2100
-#  OUTPUT: MP4 saved to disk
-# RUNTIME: X
+#  OUTPUT: Animation saved to disk
+# RUNTIME: ~10 minutes
 #  AUTHOR: Thomas D. Pellegrin <thomas@pellegr.in>
 #    YEAR: 2023
 # ==============================================================================
@@ -31,8 +31,7 @@ library(viridis)
 start_time <- Sys.time()
 
 # Import custom font
-# font_add_google(name = "Overlock", family = "Overlock")
-font_add_google(name = "Montserrat", family = "Montserrat")
+font_add_google(name = "Overlock", family = "Overlock")
 showtext_auto()
 
 # Clear the console
@@ -79,8 +78,7 @@ p <- ggplot(data = df[df$var != "SSP119", ]) +
     x      = 1975,
     y      = 6,
     col    = "white",
-    # family = "Overlock",
-    family = "Montserrat",
+    family = "Overlock",
     size   = 18L,
     label  = "Historical (1950–2014)"
   ) +
@@ -89,8 +87,7 @@ p <- ggplot(data = df[df$var != "SSP119", ]) +
     x      = 2056,
     y      = 6,
     col    = "white",
-    # family = "Overlock",
-    family = "Montserrat",
+    family = "Overlock",
     size   = 18L,
     label  = "Forecast (2015–2099)"
   ) +
@@ -141,8 +138,7 @@ p <- ggplot(data = df[df$var != "SSP119", ]) +
       color    = var
     ),
     hjust      = "left",
-    # family     = "Overlock",
-    family     = "Montserrat",
+    family     = "Overlock",
     size       = 18L
   ) +
   
@@ -158,8 +154,7 @@ p <- ggplot(data = df[df$var != "SSP119", ]) +
     panel.border     = element_blank(),
     panel.grid       = element_blank(),
     plot.background  = element_rect(fill = "#202124", color = NA),
-    # text             = element_text(color = "white", family = "Overlock", size = 64L)
-    text             = element_text(color = "white", family = "Montserrat", size = 64L)
+    text             = element_text(color = "white", family = "Overlock", size = 64L)
   )
 
 # Show plot
@@ -178,7 +173,6 @@ animate(
   duration    = 66L,
   fps         = 24L,
   renderer    = ffmpeg_renderer(),
-  # renderer    = av_renderer(),
   height      = 2160L,
   width       = 3840L,
   bg          = "#202124",
@@ -188,6 +182,6 @@ animate(
 
 # Save the animation
 anim_save(
-  filename = "clips/animation.mp4",
+  filename = "out/global-warming.mp4",
   animation = last_animation()
 )
