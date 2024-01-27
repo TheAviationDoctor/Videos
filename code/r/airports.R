@@ -1,9 +1,9 @@
 # ==============================================================================
 #    NAME: code/r/airports.R
-#   INPUT: Warming data
+#   INPUT: Airport geolocation and traffic data
 # ACTIONS: Animates a plot showing the population and sample airports
-#  OUTPUT: MP4 saved to disk
-# RUNTIME: X
+#  OUTPUT: Plots saved to disk
+# RUNTIME: < 10 seconds
 #  AUTHOR: Thomas D. Pellegrin <thomas@pellegr.in>
 #    YEAR: 2023
 # ==============================================================================
