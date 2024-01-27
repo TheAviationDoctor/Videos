@@ -82,5 +82,5 @@ class Scene(MovingCameraScene):
         self.wait(3)
 
 # Run with:
-# manim -pqX code/manim/community/timeline.py Scene --disable_caching
-# Replace X with l for low quality (480p15), h for high quality (1080p60), k for 4K (2160p60)
+# manim -pqx D:/Dropbox/Projects/Code/Videos/code/manim/community/timeline.py Scene --disable_caching
+# Replace x with l for low quality (480p15), h for high quality (1080p60), k for 4K (2160p60)

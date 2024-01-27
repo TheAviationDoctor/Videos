@@ -3,7 +3,7 @@
 #   INPUT: Warming data
 # ACTIONS: Animates a plot showing the surface temperature increase up to 2100
 #  OUTPUT: Animation saved to disk
-# RUNTIME: ~10 minutes
+# RUNTIME: ~15 minutes
 #  AUTHOR: Thomas D. Pellegrin <thomas@pellegr.in>
 #    YEAR: 2023
 # ==============================================================================

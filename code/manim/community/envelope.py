@@ -79,6 +79,37 @@ class Scene(MovingCameraScene):
         # Label Phoenix Sky Harbor International Airport
         phx_label = Text("PHX", font_size = 26).next_to(phx, direction = RIGHT, buff = 0.15)
 
+
+
+        # Set the vertices of the extended environmental envelope
+        p1_ext = [[-38,  -500, 0]]
+        p2_ext = [[ 55,  -500, 0]]
+        p3_ext = [[-25, 39000, 0]]
+        p4_ext = [[-65, 39000, 0]]
+
+        # Set the extended environmental envelope
+        ee_ext = Polygon(ax.c2p(p1_ext), ax.c2p(p2_ext), ax.c2p(p3_ext), ax.c2p(p4_ext), color = WHITE)
+
+        # Calculate the intercepts of the extended environmental envelope
+        il = sl * p1_ext[0][0] - p1_ext[0][1]
+        ir = sr * p2_ext[0][0] - p2_ext[0][1]
+
+        # Set the upper vertices of the extended takeoff envelope
+        p5_ext = [[(tc + il) / sl, tc, 0]]
+        p6_ext = [[(tc + ir) / sr, tc, 0]]
+
+        # Set the extended takeoff envelope
+        te_ext = Polygon(ax.c2p(p1_ext), ax.c2p(p2_ext), ax.c2p(p6_ext), ax.c2p(p5_ext), color = RED)
+
+        # Set the boundaries of the original envelope
+        li = DashedLine(ax.c2p(p2), ax.c2p(p3), color = "#7f7f7f")
+
+        # Group
+        gr1 = Group(ee, te)
+        gr2 = Group(ee_ext, te_ext)
+
+
+
         # Render
         self.play(self.camera.auto_zoom(gr, margin = 3))
         self.play(FadeIn(x_ax, x_label), run_time = 1)
@@ -87,14 +118,16 @@ class Scene(MovingCameraScene):
         self.wait(1)
         self.play(Create(ee), run_time = 3)
         self.play(FadeIn(el))
-        self.wait(2)
+        self.wait(1)
         self.play(Create(te), run_time = 3)
         self.play(FadeOut(el), FadeIn(tl))
-        self.wait(8)
+        self.wait(1)
         self.play(FadeOut(tl))
         self.play(FadeIn(phx, phx_label))
-        self.wait(8)
+        self.wait(1)
+        self.play(Transform(gr1, gr2), FadeIn(li), run_time = 3)
+        self.wait(1)
 
 # Run with:
-# manim -pqX code/manim/community/envelope.py Scene --disable_caching
+# manim -pqX D:/Dropbox/Projects/Code/Videos/code/manim/community/envelope.py Scene --disable_caching
 # Replace X with l for low quality (480p15), h for high quality (1080p60), k for 4K (2160p60)
