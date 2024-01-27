@@ -1,5 +1,5 @@
 # ==============================================================================
-#    NAME: code/r/11-airports.R
+#    NAME: code/r/airports.R
 #   INPUT: Warming data
 # ACTIONS: Animates a plot showing the population and sample airports
 #  OUTPUT: MP4 saved to disk
@@ -106,7 +106,7 @@ p +
 
 # Save the plot
 ggsave(
-  filename = "clips/13-airports/1_airports_population.png",
+  filename = "out/1_airports_population.png",
   plot     = last_plot(),
   height   = 2160L,
   width    = 3840L,
@@ -147,7 +147,7 @@ p +
 
 # Save the plot
 ggsave(
-  filename = "clips/13-airports/2_airports_sample.png",
+  filename = "out/2_airports_sample.png",
   plot     = last_plot(),
   height   = 2160L,
   width    = 3840L,
@@ -235,7 +235,7 @@ p +
 
 # Save the plot
 ggsave(
-  filename = "clips/13-airports/3_airports_sample_no_grid.png",
+  filename = "out/3_airports_sample_no_grid.png",
   plot     = last_plot(),
   height   = 2160L,
   width    = 3840L,
@@ -280,7 +280,7 @@ p +
 
 # Save the plot
 ggsave(
-  filename = "clips/13-airports/4_airports_sample_grid.png",
+  filename = "out/4_airports_sample_grid.png",
   plot     = last_plot(),
   height   = 2160L,
   width    = 3840L,
@@ -343,7 +343,7 @@ p +
 
 # Save the plot
 ggsave(
-  filename = "clips/13-airports/5_airports_sample_grid_cells.png",
+  filename = "out/5_airports_sample_grid_cells.png",
   plot     = last_plot(),
   height   = 2160L,
   width    = 3840L,
@@ -405,7 +405,7 @@ p  +
 
 # Save the plot
 ggsave(
-  filename = "clips/13-airports/6_airports_sample_grid_cells.png",
+  filename = "out/6_airports_sample_grid_cells.png",
   plot     = last_plot(),
   height   = 2160L,
   width    = 3840L,
@@ -418,15 +418,6 @@ ggsave(
 
 # No map
 p <- ggplot() +
-  # geom_sf(data = world, color = NA, fill = "lightgray") +
-  # scale_fill_viridis(
-  #   breaks    = c(min(df$traffic), 10^6, max(df$traffic)),
-  #   direction = -1L,
-  #   labels    = c("1", "1M", "100M"),
-  #   name      = "Passenger traffic (2019)",
-  #   option    = "rocket",
-  #   trans     = "sqrt"
-  # ) +
   theme_light() +
   theme(
     axis.text          = element_blank(),
@@ -485,7 +476,7 @@ p <- ggplot() +
 
 # Save the plot
 ggsave(
-  filename = "clips/13-airports/7_just_grid_cells.png",
+  filename = "out/7_just_grid_cells.png",
   plot     = last_plot(),
   height   = 2160L,
   width    = 3840L,
@@ -494,5 +485,12 @@ ggsave(
   device   = "png",
   bg       = "#202124"
 )
+
+# ==============================================================================
+# 3 Housekeeping
+# ==============================================================================
+
+# Stop the script timer
+Sys.time() - start_time
 
 # EOF
